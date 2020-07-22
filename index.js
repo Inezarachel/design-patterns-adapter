@@ -3,6 +3,7 @@ const Laptop = require("./models/laptops");
 const Desktop = require("./models/desktop");
 const Item = require("./Cart/Item");
 const LaptopAdapter = require('./Adapters/LaptopAdapter');
+const DesktopAdapter = require("./Adapters/DesktopAdapter");
 
 class Main {
 	main() {
@@ -14,10 +15,12 @@ class Main {
 
         const shoppingCart = new ShoppingCart();
         const item1 = new LaptopAdapter(2,hpLaptop);
-        const item2 = new Item(5,dellDesktop.price,"17inches 8GB @TB 17 green amazing dell desktop")
+        //const item2 = new Item(5,dellDesktop.price,"17inches 8GB @TB 17 green amazing dell desktop")
+        const item2 = new DesktopAdapter(5,dellDesktop);
         shoppingCart.addItems(item2);
         shoppingCart.addItems(item1);
         shoppingCart.addItems( new LaptopAdapter(10,acerLaptop));
+        shoppingCart.addItems(new DesktopAdapter(1,razerDesktop));
         const printableString = shoppingCart.printItems();
         console.log(printableString)
 	}
